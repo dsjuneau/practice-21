@@ -3,7 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>With Web Worker</title>
+    <title>No Worker, Non-blocking</title>
+    <script defer type="module" src="app2.js"></script>
   </head>
-  <body></body>
+  <body>
+    <button class="btn" id="btn-1">Generate</button>
+
+    <label for="txt-1">Number of iterations</label>
+    <input type="text" id="txt-1" value="10000" />
+    <label for="txt-2">Number of coins</label>
+    <input type="text" id="txt-2" value="10000" /><br />
+    <progress id="progress-1" style="display: none"></progress> <br />
+    <h1 id="timer"></h1>
+    <h1 id="timer2"></h1>
+  </body>
 </html>
