@@ -3,6 +3,7 @@ const iter = document.getElementById("txt-1");
 const flips = document.getElementById("txt-2");
 const pro1 = document.getElementById("progress-1");
 const timer = document.getElementById("timer");
+const timer2 = document.getElementById("timer2");
 const time = Date.now();
 
 const pmf = (nof, its) => {
@@ -18,7 +19,7 @@ const pmf = (nof, its) => {
     }
     pmfArray[count] = pmfArray[count] + 1;
   }
-
+  timer2.innerHTML = `Total Run Time: ${(Date.now() - time1) / 1000}`;
   console.log("running it");
 };
 
@@ -36,7 +37,7 @@ const flipper = (e) => {
 
 // This adds a seconds
 setInterval(() => {
-  timer.innerHTML = "Seconds: " + ((Date.now() - time) / 1000).toString();
+  timer.innerHTML = `Seconds: ${(Date.now() - time) / 1000}`;
 }, 40);
 
 gen.addEventListener("click", flipper);
