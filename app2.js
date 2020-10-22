@@ -7,24 +7,32 @@ const timer2 = document.getElementById("timer2");
 const time = Date.now();
 
 let iterations;
+let delta;
 let numOfFlips;
 let time1;
-const pmfArry = [];
+const pmfArray = [];
 
 // Make this function recursive and reduce the iterations on each recursion
 // Check for last recursion
 // If last recursion, Then set timer2
 const pmf = () => {
-  for (let i = 0; i < its; i++) {
+  for (let i = 0; i < delta; i++) {
     let count = 0;
-    for (let j = 0; j < nof; j++) {
+    for (let j = 0; j < numOfFlips; j++) {
       let a = Math.floor(2 * Math.random());
       count = count + a;
     }
     pmfArray[count] = pmfArray[count] + 1;
   }
-  timer2.innerHTML = `Total Run Time: ${(Date.now() - time1) / 1000}`;
-  console.log("running it");
+  iterations = iterations - delta;
+  console.log(iterations);
+  if (iterations <= 0) {
+    timer2.innerHTML = `Total Run Time: ${(Date.now() - time1) / 1000}`;
+    console.log(pmfArray);
+    return;
+  } else {
+    pmf();
+  }
 };
 
 const flipper = (e) => {
@@ -37,12 +45,13 @@ const flipper = (e) => {
   //  gen.removeEventListener("click", flipper);
   iterations = Number(iter.value);
   numOfFlips = Number(flips.value);
-  pmfArray.length = nof;
+  delta = iterations / 100;
+  pmfArray.length = numOfFlips;
   pmfArray.fill(0);
   pmf();
 };
 
-// This adds a seconds
+// This adds seconds
 setInterval(() => {
   timer.innerHTML = `Seconds: ${(Date.now() - time) / 1000}`;
 }, 40);
