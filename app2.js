@@ -31,7 +31,7 @@ const pmf = () => {
     console.log(pmfArray);
     return;
   } else {
-    pmf();
+    setTimeout(pmf, 0);
   }
 };
 
