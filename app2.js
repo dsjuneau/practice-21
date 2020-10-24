@@ -5,6 +5,7 @@ const pro1 = document.getElementById("progress-1");
 const timer = document.getElementById("timer");
 const timer2 = document.getElementById("timer2");
 const time = Date.now();
+const pro2 = document.getElementById("myBar");
 
 let iterations;
 let delta;
@@ -27,10 +28,16 @@ const pmf = () => {
   iterations = iterations - delta;
   console.log(iterations);
   if (iterations <= 0) {
+    pro1.value = 100;
+    pro2.style.width = "100%";
+    pro2.innerHTML = "100%";
     timer2.innerHTML = `Total Run Time: ${(Date.now() - time1) / 1000}`;
     console.log(pmfArray);
     return;
   } else {
+    pro1.value = pro1.value + 1;
+    pro2.style.width = pro1.value + "%";
+    pro2.innerHTML = pro1.value + "%";
     setTimeout(pmf, 0);
   }
 };
